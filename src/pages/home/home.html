@@ -1,14 +1,41 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Finca La Cristalina
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+<ion-content>
+
+  <ion-list inset *ngIf="!jornaleros">
+    <ion-item>
+      <h2>Cargando jornaleros...</h2>
+    </ion-item>
+  </ion-list>
+
+  <ion-list inset *ngIf="jornaleros">
+    <ion-list-header>
+      Listado de jornaleros
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let jornalero of jornaleros; let i=index">
+      <ion-item (click)="editJornalero(jornalero)">
+        <h2>{{jornalero.nombres}}</h2>
+        <p>{{jornalero.correoElectronico}}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="showAlertDelete(jornalero.idJornalero)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="secondary" (tap)="openModal()">
+      <ion-icon name="person-add"></ion-icon>
+    </button>
+  </ion-fab>
+
 </ion-content>

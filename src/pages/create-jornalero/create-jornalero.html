@@ -1,0 +1,53 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+        Crear Jornalero
+      </ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="closeModal()">
+          <ion-icon name="close"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+  <ion-content padding>
+
+    <form [formGroup]="registerForm" #formJornalero="ngForm" (ngSubmit)="createJornalero(registerForm.value)">
+
+      <ion-list>
+
+        <ion-item>
+            <ion-icon name="person" item-start></ion-icon>
+          <ion-label color="primary" floating>Nombres: </ion-label>
+          <ion-input type="text" [(ngModel)]="jornalero.nombres" name="nombres" formControlName="nombres"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="calendar" item-start></ion-icon>
+          <ion-label color="primary" floating>Fecha Nacimiento: </ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" [(ngModel)]="jornalero.fechaNacimiento" name="fechaNacimiento"
+            formControlName="fechaNacimiento"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="mail" item-start></ion-icon>
+          <ion-label color="primary" floating>Correo Electrónico: </ion-label>
+          <ion-input type="email" [(ngModel)]="jornalero.correoElectronico" name="correoElectronico" formControlName="correoElectronico"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="fitness" item-start></ion-icon>
+          <ion-label color="primary" floating>Peso: </ion-label>
+          <ion-input type="number" [(ngModel)]="jornalero.peso" name="peso" formControlName="peso"></ion-input>
+        </ion-item>
+
+      </ion-list>
+
+      <button ion-button [disabled]="!registerForm.valid" type="submit" block icon-left>
+        <ion-icon name="person-add"></ion-icon>
+        Crear Jornalero
+      </button>
+
+    </form>
+  </ion-content>
