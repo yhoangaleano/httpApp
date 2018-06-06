@@ -44,8 +44,12 @@ export class JornaleroProvider {
 
   readJornaleros() {
 
+    let headers: HttpHeaders = new HttpHeaders().set('Accept', 'application/json').set('Content-Type', 'application/json;charset=UTF-8');
+
     return new Promise(resolve => {
-      this.http.get(`${GLOBAL.JornarlerosAPI}v1/jornaleros`).pipe(
+      this.http.get(`${GLOBAL.JornarlerosAPI}v1/jornaleros`, {
+        headers: headers
+      }).pipe(
         map((data:any) => {
 
           let respuesta : IUtilResponse = {
@@ -69,8 +73,12 @@ export class JornaleroProvider {
 
     // let params: HttpParams = new HttpParams().set('idJornalero', idJornalero);
 
+    let headers: HttpHeaders = new HttpHeaders().set('Accept', 'application/json').set('Content-Type', 'application/json;charset=UTF-8');
+
     return new Promise(resolve => {
-      this.http.get(`${GLOBAL.JornarlerosAPI}v1/jornaleros/${idJornalero}`).pipe(
+      this.http.get(`${GLOBAL.JornarlerosAPI}v1/jornaleros/${idJornalero}`, {
+        headers: headers
+      }).pipe(
         map((data:any) => {
 
           let respuesta : IUtilResponse = {
@@ -123,8 +131,12 @@ export class JornaleroProvider {
 
   deleteJornalero(idJornalero: string) {
 
+    let headers: HttpHeaders = new HttpHeaders().set('Accept', 'application/json').set('Content-Type', 'application/json;charset=UTF-8');
+
     return new Promise(resolve => {
-      this.http.delete(`${GLOBAL.JornarlerosAPI}v1/jornaleros/${idJornalero}`).pipe(
+      this.http.delete(`${GLOBAL.JornarlerosAPI}v1/jornaleros/${idJornalero}`, {
+        headers: headers
+      }).pipe(
         map((data:any) => {
 
           let respuesta : IUtilResponse = {
